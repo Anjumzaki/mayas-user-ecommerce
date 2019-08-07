@@ -8,19 +8,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Header } from 'react-native-elements'
 import { Button, Layout, Text } from 'react-native-ui-kitten';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar,Icon } from 'react-native-elements';
 import { Constants } from 'expo';
-import { Icon } from 'react-native-elements'
+import { SliderBox } from 'react-native-image-slider-box';
+import Categories from '../components/Categories'
 
 
-import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  state = {
-    search: '',
-  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+     
+      images: [
+        'https://source.unsplash.com/1024x768/?nature',
+        'https://source.unsplash.com/1024x768/?water',
+        'https://source.unsplash.com/1024x768/?girl',
+        'https://source.unsplash.com/1024x768/?tree'
+      ]
+    };
+  }
   updateSearch = search => {
     this.setState({ search });
   };
@@ -48,8 +57,11 @@ export default class HomeScreen extends React.Component {
         contentContainerStyle={styles.contentContainer}>
 
         <Layout style={styles.container}>
-          <Text style={styles.text} category='h4'>Welcome to UI Kitten</Text>
+        <SliderBox images={this.state.images} />
+        <Categories/>
+       
           <Button>BUTTON</Button>
+        
         </Layout>
       </ScrollView>
     </View>
